@@ -73,6 +73,10 @@ Understand the error type, then check where to fix/said error would come from.
 
 ## Where Claude Code helped or got in the way
 
+Claude Code identified the correct file (routes.py) and fixed the trailing 's' in the endpoint path correctly on the first try — no guidance needed. I reviewed the diff before accepting and it was clean. That said, I prefer Claude Code to ask for clarification before acting rather than making changes immediately.
+
 ---
 
 ## What I put in CLAUDE.md and whether it changed agent behavior
+
+I added exact install, run, and test commands, a module-by-module architecture summary (routes.py → services.py → db.py → ai.py → models.py), and three conventions: test database isolation via ANKI_DB_PATH, the optional AI endpoint returning 503 without a key, and keeping the test suite mock-only. Claude Code did reference the architecture correctly after CLAUDE.md was in place. That said, getting agent behaviour to fully meet my standards is a trial-and-error process — I intend to keep refining it over time.

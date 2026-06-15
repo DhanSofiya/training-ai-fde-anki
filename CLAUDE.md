@@ -43,3 +43,7 @@ Data lives in `anki.db` in the repo root (created on first run). On startup, `ma
 **AI endpoint is optional:** `POST /decks/{deck_id}/generate` requires `ANTHROPIC_API_KEY`. Without it the endpoint returns 503 cleanly. All other endpoints and all tests work without a key.
 
 **No API key in tests:** the test suite mocks `ai.generate_cards` directly — it never calls the real Claude API. Keep it that way.
+
+## Behaviour
+
+Always ask for clarification before making any changes to the code.
