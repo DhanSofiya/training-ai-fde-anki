@@ -76,6 +76,14 @@ def test_stats_on_reviewed_deck(client):
     assert body["retention"] == 0.6
 
 
+def test_stats_on_empty_deck_returns_zero_retention(client):
+    res = client.get("/decks/2/stats")
+    assert res.status_code == 200
+    data = res.json()
+    assert data["retention"] == 0.0
+    assert data["reviews_done"] == 0
+
+
 def test_generate_without_key_returns_503(client, monkeypatch):
     monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
     res = client.post("/decks/1/generate", json={"topic": "colors", "count": 3})
