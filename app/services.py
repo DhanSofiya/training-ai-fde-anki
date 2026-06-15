@@ -51,7 +51,7 @@ def deck_stats(deck_id: int) -> dict:
     cards = db.cards_for_deck(deck_id)
     reviews = db.reviews_for_deck(deck_id)
     correct = sum(r["correct"] for r in reviews)
-    retention = correct / len(reviews)
+    retention = round(correct / len(reviews), 2) if reviews else 0.0
     due = [c for c in cards if is_due(c)]
     return {
         "total_cards": len(cards),
